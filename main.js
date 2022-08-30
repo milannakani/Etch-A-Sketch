@@ -1,14 +1,14 @@
 let color = "black";
 let click = true;
 
-function populateGrid (size) {
+function populateGrid (size) {  //function to make grids as per requirement
 let board = document.querySelector(".grid");
 let squares = board.querySelectorAll("div")
 //squares.forEach(div => div.remove());
 board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
-let amount = size*size;
+let amount = size*size;  //loop to create square divs
 for (let i = 0; i < amount; i++) {
     let square = document.createElement("div");
     square.addEventListener("mouseover", colorSquare); 
@@ -18,7 +18,7 @@ for (let i = 0; i < amount; i++) {
 }
 populateGrid(16);
 
-function changeSize(input) {
+function changeSize(input) {   // function to provide input 
     if (input >=2 && input<=100) {
         document.querySelector(".error").style.display = "none";
         populateGrid(input); 
@@ -29,7 +29,7 @@ function changeSize(input) {
     }
 }
 
-function colorSquare () {
+function colorSquare () {   // chooosing color from the buttons below
     if (click) {
     if (color === "random") {
         this.style.backgroundColor = `hsl(${Math.random()*360},100%,50%)`;
@@ -43,13 +43,13 @@ function colorSquare () {
 function changeColor(choice) {
 color = choice;
 }
-function resetBoard () {
+function resetBoard () {   // to clear a grid when reset button is used
     let board = document.querySelector(".grid");
     let squares = board.querySelectorAll("div")
     squares.forEach(div => div.style.backgroundColor = "white");
 }
 
-document.querySelector(".content").addEventListener("click", (e) => {
+document.querySelector(".content").addEventListener("click", (e) => {   //code to use click as event on/off
     if (e.target.tagName != "BUTTON") {
     click = !click;
     if (click) {
